@@ -10,7 +10,39 @@ export const loginUser = async requestBody => {
     return data;
   };
 
+  export const SignUpUser = async requestBody => {
+    const {
+      data: { data }
+    } = await axios.post('users/signup', requestBody);
+  
+    return data;
+  };
+
+
+
+  export const getAllUsers = async () => {
+    const {
+      data: {
+        data: { users }
+      }
+    } = await axios.get('/users');
+
+    return users;
+  };
+
+
 
   
+
+  export const getAllPackages = async () => {
+    const {
+      data: {
+        data: { packages }
+      }
+    } = await axios.get('/admin/packages');
+
+    return packages;
+  };
+
 
 
