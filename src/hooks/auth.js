@@ -1,79 +1,94 @@
-import { useQuery, useQueryClient, useMutation } from 'react-query';
+import { useState, useEffect } from "react";
+import { loginUser, SignUpUser, getAllUsers, getAllPackages } from "../service/api";
 
-import { getUser, login } from "../service/auth";
+// Hook for logging in user
+export const useLogin = (initialState) => {
+  const [userData, setUserData] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-import { getMe, updateMe, loginUser, signupUser } from '$utils/queryFunctions';
-
-// ////////////////////////////////////////////////////////////
-export const useUser = () => {
-  const {
-    data: user,
-    isLoading,
-    isError
-  } = useQuery('user', getMe, {
-    retry: false,
-    enabled: !!getUser(),
-    cacheTime: Infinity,
-    staleTime: Infinity
-  });
-
-  return { user, isLoading, isError };
-};
-
-// ////////////////////////////////////////////////////////////
-export const useLogin = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: loginUser,
-    onSuccess(response) {
-      // Destruct token from Axios response
-      const { token, user } = response;
-
-      // Set jwt token in local storage
-      login(token);
-
-      // Update query cache for user
-      queryClient.setQueryData('user', user);
-    },
-    onError(err) {
-      console.log(err.response?.data || err);
+  const login = async (requestBody) => {
+    try {
+      setLoading(true);
+      const response = await loginUser(requestBody);
+      setUserData(response);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setError(err.response.data.message);
     }
-  });
+  };
+
+  return [userData, login, loading, error];
 };
 
-// ////////////////////////////////////////////////////////////
-export const useUpdateUser = () => {
-  const queryClient = useQueryClient();
+// Hook for signing up user
+export const useSignUp = (initialState) => {
+  const [userData, setUserData] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  return useMutation({
-    mutationFn: updateMe,
-    onSuccess(user) {
-      queryClient.setQueryData('user', user);
+  const signUp = async (requestBody) => {
+    try {
+      setLoading(true);
+      const response = await SignUpUser(requestBody);
+      setUserData(response);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setError(err.response.data.message);
     }
-  });
+  };
+
+  return [userData, signUp, loading, error];
 };
 
-// ////////////////////////////////////////////////////////////
-export const useSignup = () => {
-  const queryClient = useQueryClient();
+// Hook for getting all users
+export const useAllUsers = (initialState) => {
+  const [users, setUsers] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  return useMutation({
-    mutationFn: signupUser,
-    onSuccess(response) {
-      // Destruct token from Axios response
-      const { token, user } = response;
-
-      // Set jwt token in local storage
-      login(token);
-
-      // Update query cache for user
-      queryClient.setQueryData('user', user);
-    },
-    onError(err) {
-      console.log(err.response?.data || err);
+  const getAll = async () => {
+    try {
+      setLoading(true);
+      const response = await getAllUsers();
+      setUsers(response);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setError(err.response.data.message);
     }
-  });
+  };
+
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  return [users, loading, error];
 };
 
-export default useLogin;
+// Hook for getting all packages
+export const useAllPackages = (initialState) => {
+  const [packages, setPackages] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const getAll = async () => {
+    try {
+      setLoading(true);
+      const response = await getAllPackages();
+      setPackages(response);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setError(err.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  return [packages, loading, error];
+};
