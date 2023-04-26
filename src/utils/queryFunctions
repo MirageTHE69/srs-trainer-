@@ -31,18 +31,74 @@ export const loginUser = async requestBody => {
   };
 
 
-
-  
-
-  export const getAllPackages = async () => {
+  export const getAllWorkoutPlans = async () => {
     const {
-      data: {
-        data: { packages }
-      }
-    } = await axios.get('/admin/packages');
-
-    return packages;
+      data: { data },
+    } = await axios.get('/workoutPlans');
+    return data;
+  };
+  
+  export const getWorkoutPlan = async (id) => {
+    const {
+      data: { data },
+    } = await axios.get(`/workoutPlans/${id}`);
+    return data;
+  };
+  
+  export const createWorkoutPlan = async (requestBody) => {
+    const {
+      data: { data },
+    } = await axios.post('/workoutPlans', requestBody);
+    return data;
+  };
+  
+  export const updateWorkoutPlan = async (id, requestBody) => {
+    const {
+      data: { data },
+    } = await axios.patch(`/workoutPlans/${id}`, requestBody);
+    return data;
+  };
+  
+  export const deleteWorkoutPlan = async (id) => {
+    const {
+      data: { data },
+    } = await axios.delete(`/workoutPlans/${id}`);
+    return data;
   };
 
+  export const createPackage = async (requestBody) => {
+    const {
+      data: { data },
+    } = await axios.post('/admin/packages', requestBody);
+    return data;
+  };
+  
+  export const getAllPackages = async () => {
+    const {
+      data: { data },
+    } = await axios.get('/admin/packages');
+    return data;
+  };
+  
+  export const getPackage = async (id) => {
+    const {
+      data: { data },
+    } = await axios.get(`/admin/packages/${id}`);
+    return data;
+  };
+  
+  export const updatePackage = async (id, requestBody) => {
+    const {
+      data: { data },
+    } = await axios.patch(`/admin/packages/${id}`, requestBody);
+    return data;
+  };
+  
+  export const deletePackage = async (id) => {
+    const {
+      data: { data },
+    } = await axios.delete(`/admin/packages/${id}`);
+    return data;
+  };
 
 
