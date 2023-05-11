@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useLogin } from '../hooks/auth';
 import hero from '../images/hero.png';
-// import Navbar from '../componets/Navbar';
+import Navbar from '../componets/Navbar';
 
 const IndexPage = () => {
   const [formData, setFormData] = React.useState({

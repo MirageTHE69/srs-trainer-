@@ -5,7 +5,16 @@ module.exports = {
     "./src/components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // ...
+        customColor: '#040404',
+        card: '#0B0B0B',
+        innerCard : '#24252C',
+        borderColor : '#2E2E2E',
+        bluecard : '#0048FF'
+      },
+    },
   },
   plugins: [],
 }
