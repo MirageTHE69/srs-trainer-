@@ -2,67 +2,18 @@ import React from 'react';
 import Table from '../componets/trainer/userTable';
 import Abstract from '../images/abstract.png';
 import Msg from '../images/msgIcon.png';
+import Navbar from '../componets/Navbar';
+import InfoCard from '../componets/infoCard';
+
 
 const Dashboard = () => {
   return (
     <div className=' bg-black text-white'>
+      <Navbar/>
       <section className='w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 pt-20 mb-5  '>
-        <div className='w-72 bg-bluecard shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl'>
-          <a href='#'>
-            <div className='px-4 py-3 w-72 pt-5'>
-              <span className=' mr-3 uppercase text-xs'>No of</span>
-              <p className='text-lg font-bold  truncate  block uppercase'>
-                Packages
-              </p>
-              <div className='flex items-center'>
-                <p className='text-lg font-semibold  cursor-auto my-3'>003</p>
-                <div className='  w-16 h-14 ml-40 '>
-                  <div className='ml-auto'>
-                    <img src={Abstract} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div className='w-72 bg-bluecard shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl'>
-          <a href='#'>
-            <div className='px-4 py-3 w-72 pt-5'>
-              <span className=' mr-3 uppercase text-xs'>No of</span>
-              <p className='text-lg font-bold  truncate  block uppercase'>
-                Packages
-              </p>
-              <div className='flex items-center'>
-                <p className='text-lg font-semibold  cursor-auto my-3'>003</p>
-                <div className='  w-16 h-14 ml-40 '>
-                  <div className='ml-auto'>
-                    <img src={Abstract} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div className='w-72 bg-bluecard shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl'>
-          <a href='#'>
-            <div className='px-4 py-3 w-72 pt-5'>
-              <span className=' mr-3 uppercase text-xs'>No of</span>
-              <p className='text-lg font-bold  truncate  block uppercase'>
-                Packages
-              </p>
-              <div className='flex items-center'>
-                <p className='text-lg font-semibold  cursor-auto my-3'>003</p>
-                <div className='  w-16 h-14 ml-40 '>
-                  <div className='ml-auto'>
-                    <img src={Abstract} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
+       <InfoCard/>
+       <InfoCard/>
+       <InfoCard/>
       </section>
 
       {/* table */}

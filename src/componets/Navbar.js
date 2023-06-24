@@ -1,44 +1,27 @@
-import * as React from "react";
-import { Link } from "gatsby";
-
-import Logo from "../images/srs.svg";
+import * as React from 'react';
+import { useState } from 'react';
+import Abstract from '../images/abstract.png';
 
 const Navbar = () => {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <nav className="bg-black text-white py-4">
-      <div className="container flex justify-between items-center mx-auto">
-        <div className="flex-shrink-0">
-          <img src="Logo" alt="Logo" className="h-8"></img>
-        </div>
-        <div className="hidden md:block">
-          <ul className="flex space-x-4">
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Home 1
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Home 2
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Home 3
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Home 4
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="flex-shrink-0">
-          <button className="h-10 bg-slate-100 w-28"></button>
-        </div>
-      </div>
-    </nav>
+    <nav class="flex justify-between items-center bg-black p-4 text-white">
+    <div class="logo">
+      <img src="logo.png" alt="Logo" class="w-12" />
+    </div>
+    <ul class="flex items-center gap-5">
+      <li className="mr-4">Home</li>
+      <li className="mr-4">Exercise</li>
+      <li className="mr-4">Dashboard</li>
+      <li className="mr-4">Chat</li>
+    </ul>
+    <button class="bg-bluecard text-white py-2 px-4 rounded">Button</button>
+  </nav>
   );
 };
 

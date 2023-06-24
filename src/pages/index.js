@@ -17,10 +17,11 @@ const IndexPage = () => {
   };
 
   return (
+    <div>
+      <Navbar/>
     <div
       className='bg-cover min-h-screen text-white flex flex-col justify-center space-y-10 px-10'
       style={{ backgroundImage: `url(${hero})` }}>
-      {/* <Navbar /> */}
       <div className='space-y-4'>
         <h1 className='text-7xl uppercase'>srs</h1>
         <h2 className='text-4xl capitalize'>welcome back, trainer!</h2>
@@ -67,6 +68,7 @@ const IndexPage = () => {
       </form>
 
       {error && <p className='text-red-500'>{error}</p>}
+    </div>
     </div>
   );
 };

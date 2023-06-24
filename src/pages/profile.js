@@ -1,11 +1,11 @@
 import * as React from 'react';
-
-// import Navbar from '../componets/Navbar';
+import Navbar from '../componets/Navbar';
 
 const ProfilePage = () => {
 
   return (
 <div className='bg-customColor text-white'>
+<Navbar/>
 <span className=' font-bold text-lg flex justify-center pt-5 '>Profile Page</span>  
 <div className='grid grid-row-2 gap-y-28'>
     <div className='flex flex-row'>
